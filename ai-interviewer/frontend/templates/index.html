@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Interview Assistant</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.min.css" rel="stylesheet">
+    <link href="/static/css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div id="inputStage" class="stage active card">
+        <h2 class="card-title">Start Your Interview</h2>
+        <div class="input-group">
+            <label for="interviewType">Interview Type</label>
+            <select id="interviewType" required>
+                <option value="">Select interview type</option>
+                <option value="Technical">Technical</option>
+                <option value="Behavioral">Behavioral</option>
+                <option value="System Design">System Design</option>
+            </select>
+        </div>
+        <button id="startButton">Start Interview</button>
+    </div>
+
+    <div id="cameraStage" class="stage card">
+        <h2 class="card-title">Interview in Progress</h2>
+        <div class="timer" id="liveTimer">00:00:00</div>
+        <div class="interview-layout">
+            <div class="main-content">
+                <div class="video-container">
+                    <video id="videoElement" autoplay playsinline></video>
+                </div>
+                <div class="metrics-display">
+                    <div id="smileIntensity">Smile: 0%</div>
+                    <div id="eyeContact">Eye Contact: Unknown</div>
+                    <div id="posture">Posture: Unknown</div>
+                    <div id="fidget">Fidgeting: No</div>
+                </div>
+                <button class="end-button" id="endButton">End Interview</button>
+            </div>
+            <div class="questions-panel">
+                <div class="questions-container">
+                    <h3>Interview Questions</h3>
+                    <div class="question-display">
+                        <div id="currentQuestion"></div>
+                    </div>
+                    <div class="question-controls">
+                        <button id="prevQuestion">Previous</button>
+                        <button id="nextQuestion">Next</button>
+                    </div>
+                </div>
+                <div class="chat-box">
+                    <div class="chat-messages" id="chatMessages">
+                        <!-- Messages will be added here dynamically -->
+                    </div>
+                    <div class="chat-input-container">
+                        <input type="text" class="chat-input" id="chatInput" placeholder="Type your answer...">
+                        <button class="voice-button" id="voiceButton">🎤</button>
+                        <button class="send-button" id="sendMessage">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="reviewStage" class="stage card">
+        <h2 class="card-title">Interview Review</h2>
+        <div class="review-item">
+            <p>Type: <span id="reviewType"></span></p>
+            <p>Duration: <span id="reviewDuration"></span></p>
+        </div>
+        
+        <div class="feedback-section">
+            <h3>Performance Metrics</h3>
+            <div id="feedbackPoints" class="feedback-list">
+                <!-- Feedback points will be added here dynamically -->
+            </div>
+            <div class="input-group">
+                <label for="customFeedback">Additional Notes</label>
+                <textarea id="customFeedback" rows="4" placeholder="Add your own notes about the interview..."></textarea>
+            </div>
+        </div>
+
+        <button id="newInterviewButton">Start New Interview</button>
+    </div>
+
+    <!-- JavaScript -->
+    <script type="module" src="/static/js/app.js"></script>
+</body>
+</html>
+
+
